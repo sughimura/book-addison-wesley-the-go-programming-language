@@ -14,11 +14,11 @@ import (
 	"time"
 )
 
-var palette = []color.Color{color.White, color.Black} // NOTE: composite literals
+var palette = []color.Color{color.Black, color.White} // NOTE: composite literals
 
 const (
-	whiteIndex = 0
-	blackIndex = 1
+	blackIndex = 0
+	whiteIndex = 1
 )
 
 func main() {
@@ -43,7 +43,7 @@ func lissajous(out io.Writer) {
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), blackIndex)
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), whiteIndex)
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
