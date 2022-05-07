@@ -14,8 +14,20 @@ import (
 	"time"
 )
 
-var palette = []color.Color{color.Black, color.White} // NOTE: composite literals
-
+var palette = []color.Color{
+	color.RGBA{
+		R: 0,
+		G: 0,
+		B: 0,
+		A: 1,
+	},
+	color.RGBA{
+		R: 102,
+		G: 187,
+		B: 106,
+		A: 1,
+	},
+} // NOTE: composite literals
 const (
 	blackIndex = 0
 	whiteIndex = 1
