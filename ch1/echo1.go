@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	var s, sep string
+	var s, sep string // NOTE: 暗黙的にゼロ値として初期化される
 	for i := 0; i < len(os.Args); i++ {
 		s += sep + os.Args[i]
 		sep = " "
