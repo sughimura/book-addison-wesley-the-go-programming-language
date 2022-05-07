@@ -14,7 +14,7 @@ import (
 	"time"
 )
 
-var palette = []color.Color{color.White, color.Black}
+var palette = []color.Color{color.White, color.Black} // NOTE: composite literals
 
 const (
 	whiteIndex = 0
