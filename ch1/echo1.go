@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"os" // NOTE: プラットフォームから独立した形式でオペレーティングシステムを扱うための関数と値を提供する
 )
 
 func main() {
