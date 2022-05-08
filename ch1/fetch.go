@@ -19,6 +19,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err) // 標準エラー出力にエラー内容を出力する
 			os.Exit(1)                                 // プロセスをステータスコード1で終了させる
 		}
+		fmt.Printf("status code: %v\n", resp.Status)
 		_, err = io.Copy(os.Stdout, resp.Body)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
