@@ -6,10 +6,14 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
 	for _, url := range os.Args[1:] {
+		if !strings.HasPrefix(url, "http://") {
+			url = "http://" + url
+		}
 		resp, err := http.Get(url) // エラーがなければレスポンス構造体respで結果を返す。respのBodyフィールドは読み込み可能なストリームとしてサーバからのレスポンスを含む
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err) // 標準エラー出力にエラー内容を出力する
