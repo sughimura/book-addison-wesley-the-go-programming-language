@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 )
@@ -15,12 +15,9 @@ func main() {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err) // 標準エラー出力にエラー内容を出力する
 			os.Exit(1)                                 // プロセスをステータスコード1で終了させる
 		}
-		b, err := ioutil.ReadAll(resp.Body) // レスポンス全体を読み込み結果をbに保存する
-		resp.Body.Close()                   // 資源のリークを防ぐためにストリームを閉じる
+		_, err = io.Copy(os.Stdout, resp.Body)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
-			os.Exit(1)
 		}
-		fmt.Printf("%s", b)
 	}
 }
