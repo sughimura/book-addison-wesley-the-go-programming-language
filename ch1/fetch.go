@@ -16,7 +16,7 @@ func main() {
 			os.Exit(1)
 		}
 		b, err := ioutil.ReadAll(resp.Body) // レスポンス全体を読み込み結果をbに保存する
-		resp.Body.Close()
+		resp.Body.Close()                   // 資源のリークを防ぐためにストリームを閉じる
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
 			os.Exit(1)
