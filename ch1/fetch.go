@@ -13,7 +13,7 @@ func main() {
 		resp, err := http.Get(url) // エラーがなければレスポンス構造体respで結果を返す。respのBodyフィールドは読み込み可能なストリームとしてサーバからのレスポンスを含む
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
-			os.Exit(1)
+			os.Exit(1) // プロセスをステータスコード1で終了させる
 		}
 		b, err := ioutil.ReadAll(resp.Body) // レスポンス全体を読み込み結果をbに保存する
 		resp.Body.Close()                   // 資源のリークを防ぐためにストリームを閉じる
